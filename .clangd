@@ -1,0 +1,8 @@
+# clangd не знает GCC-флагов контрактов C++26 — вырезаем их из
+# compile_commands.json. Сам синтаксис pre()/contract_assert для clangd
+# скрыт макросами RTOS_* (без __cpp_contracts они — пустые заглушки).
+CompileFlags:
+  Remove:
+    - -fcontracts
+    - -fcontract-evaluation-semantic=*
+    - -fcontracts-*
